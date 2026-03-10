@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="auth-body">
+    <div class="auth-container">
+        <div class="auth-left">
+            <div class="auth-logo">🌸 Floral</div>
+            <h1>Organize your life seamlessly with Floral Tasks.</h1>
+            <div class="auth-image-placeholder">
+                <img src="assets/bg.png" alt="3D abstract shapes" />
+            </div>
+        </div>
+        <div class="auth-right">
+            <div class="auth-header">
+                <span class="language-dropdown">English (UK) ▾</span>
+            </div>
+            <div class="auth-form-wrapper">
+                <h2 id="authTitle" class="auth-title">Create Account</h2>
+                <div class="social-login">
+                    <button class="social-btn"><img
+                            src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+                            alt="G"> Sign Up with Google</button>
+                    <button class="social-btn"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png"
+                            alt="F"> Sign Up with Facebook</button>
+                </div>
+                <div class="divider"><span>-OR-</span></div>
+
+                <form id="authForm" class="auth-form">
+                    <div class="auth-input-group" id="fullNameGroup">
+                        <input type="text" id="fullName" placeholder="Full Name">
+                    </div>
+                    <div class="auth-input-group">
+                        <input type="email" id="email" required placeholder="Email Address">
+                    </div>
+                    <div class="auth-input-group password-group">
+                        <input type="password" id="password" required placeholder="Password">
+                        <span class="toggle-password" onclick="togglePassword()">👁️</span>
+                    </div>
+
+                    <button type="submit" class="auth-submit-btn" id="authSubmitBtn">Create Account</button>
+
+                    <p class="auth-switch">Already have an account? <a href="#" id="toggleAuthMode">Log in</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+
+</html>

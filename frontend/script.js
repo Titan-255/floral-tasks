@@ -1,6 +1,18 @@
 const API_URL = '/tasks';
 
 document.addEventListener('DOMContentLoaded', () => {
+    const user = localStorage.getItem('floralUser');
+    if (!user) {
+        window.location.href = '/login.html';
+        return;
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('floralUser');
+        window.location.href = '/login.html';
+    });
+
     fetchTasks();
 
     const taskForm = document.getElementById('taskForm');
