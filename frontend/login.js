@@ -13,8 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const authTitle = document.getElementById('authTitle');
     const fullNameGroup = document.getElementById('fullNameGroup');
     const authSubmitBtn = document.getElementById('authSubmitBtn');
-    const socialText1 = document.querySelectorAll('.social-btn')[0];
-    const socialText2 = document.querySelectorAll('.social-btn')[1];
+    const socialText1 = document.getElementById('googleBtn');
 
     toggleAuthBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -27,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
             authSubmitBtn.textContent = "Log In";
             toggleAuthBtn.parentElement.innerHTML = 'Don\'t have an account? <a href="#" id="toggleAuthMode">Sign up</a>';
             socialText1.innerHTML = '<img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="G"> Log in with Google';
-            socialText2.innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png" alt="F"> Log in with Facebook';
         } else {
             authTitle.textContent = "Create Account";
             fullNameGroup.style.display = "block";
@@ -35,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
             authSubmitBtn.textContent = "Create Account";
             toggleAuthBtn.parentElement.innerHTML = 'Already have an account? <a href="#" id="toggleAuthMode">Log in</a>';
             socialText1.innerHTML = '<img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="G"> Sign Up with Google';
-            socialText2.innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png" alt="F"> Sign Up with Facebook';
         }
 
         // Re-attach listener to newly created link
@@ -67,6 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
             // Simulated Register logic
             localStorage.setItem('floral_account_' + email, JSON.stringify({ name: fullName, password }));
             localStorage.setItem('floralUser', JSON.stringify({ email, name: fullName })); // Auto login
+            window.location.href = '/index.html';
+        }
+    });
+
+    socialText1.addEventListener('click', () => {
+        let dummyEmail = prompt("Simulating Google OAuth: Please enter your Google Email address");
+        if (dummyEmail) {
+            let user = localStorage.getItem('floral_account_' + dummyEmail);
+            let name = "Google User";
+            if (user) {
+                name = JSON.parse(user).name;
+            } else {
+                localStorage.setItem('floral_account_' + dummyEmail, JSON.stringify({ name, password: 'google_oauth_dummy' }));
+            }
+            localStorage.setItem('floralUser', JSON.stringify({ email: dummyEmail, name }));
             window.location.href = '/index.html';
         }
     });
